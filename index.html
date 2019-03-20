@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="referrer" content="no-referrer" />
+    <title>iosweb</title>
+    <script>
+      (function() {
+        'use strict';
+        //获取设备宽度 并计算其与UI界面的比例并将其设置到html的style中作为rem值
+        var screenWidth;
+        var html = document.getElementsByTagName("html")[0];
+        if (window.innerWidth) {//标准浏览器的写法
+          screenWidth = window.innerWidth;
+        } else if ((document.body) && (document.body.clientWidth)) {//非标准浏览器ie10以下
+          screenWidth = document.body.clientWidth;
+        }
+        //750宽度 1rem 等于100px
+        var count = 100 * screenWidth / 750;
+        if(count>=100){count =100;}
+        html.style.fontSize = count + "px";
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
