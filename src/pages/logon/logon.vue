@@ -1,7 +1,7 @@
 <template>
   <div class="p-wrap">
     <div class="h-wrap">
-      <span>登陆</span>
+      <span>注册</span>
     </div>
     <div class="c-wrap">
       <div class="content-wrap">
@@ -13,9 +13,13 @@
           <span>密码</span>
           <input type="password" maxlength="20" v-model="loginForm.password">
         </div>
+        <div class="content-item">
+          <span>重复密码</span>
+          <input type="password" maxlength="20" v-model="loginForm.passwordagain">
+        </div>
         <div class="content-btnSty">
-          <div class="content-btn" @click="login">登录</div>
-          <div class="content-btn" @click="singUp">去注册</div>
+          <div class="content-btn" @click="login">去登录</div>
+          <div class="content-btn" @click="logon">提交注册</div>
         </div>
       </div>
     </div>
@@ -27,34 +31,35 @@
 
 <script>
 export default {
-  name: "Login",
+  name: "Logon",
   data() {
     return {
       loginForm: {
         username: "18211131111",
-        password: "123456"
+        password: "123456",
+        passwordagain: ""
       },
       UserToken: ""
     };
   },
   methods: {
-    login() {
+    logon() {
       if (this.isTrue()) {
         let token = "xxxxx";
         sessionStorage.setItem("iosWebToke", token);
         alert("登录成功");
-        this.$router.push({ path: "/tabs/announcement" });
+        this.$router.push({ path: "/tabs/todayplease" });
 
         this.Ajax.post("/Mobile/login", this.loginForm).then(res => {
           let token = "xxxxx";
           sessionStorage.setItem("iosWebToke", token);
           alert("登录成功");
-          this.$router.push({ path: "/tabs/announcement" });
+          this.$router.push({ path: "/tabs/todayplease" });
         });
       }
     },
-    singUp() {
-      this.$router.push({ path: "/logon" });
+    login() {
+      this.$router.push({ path: "/login" });
     },
     isTrue() {
       const subForm = this.loginForm;

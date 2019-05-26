@@ -8,7 +8,7 @@ axios.defaults.baseURL = requestHead+projectName;
 axios.interceptors.request.use(
   config => {
     config.headers['token'] =  getToken().token;
-    config.headers['authorization'] =  'dfj777jshjh7hns8hjg8sgj8dhajs8h9_56fe18cead11477ab2f59fa8ec60138a_1';
+    // config.headers['authorization'] =  '';
     return config
   }
 );

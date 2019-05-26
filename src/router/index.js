@@ -5,9 +5,10 @@ import wh from '../util/common';
 
 Vue.use(Router);
 const Login = () => import('../pages/Login/Login.vue');
+const logon = () => import('../pages/logon/logon.vue');
 const QueryPage = () => import('../pages/MainMessage/QueryPage.vue');
-const TodayPlease = () => import('../pages/MainMessage/TodayPlease.vue');
-const PleaseGoOut = () => import('../pages/MainMessage/PleaseGoOut.vue');
+const Announcement = () => import('../pages/MainMessage/Announcement.vue');
+const Order = () => import('../pages/MainMessage/Order.vue');
 const MeMessage = () => import('../pages/MainMessage/MeMessage.vue');
 const Approval = () => import('../pages/ApprovalStatus/Approval')
 
@@ -15,20 +16,32 @@ let router = new Router({
   routes: [
     {
       path: '/',
-      component: Login
+      redirect: '/login',
+    },
+    {
+      path: '/login',
+      component: Login,
+      name:'Login'
+    },
+    {
+      path: '/logon',
+      component: logon,
+      name:'Logon'
     },
     {
       path: '/tabs',
-      redirect: '/',
+      redirect: '/login',
       component: QueryPage,
       children: [
         {
-          path: 'todayplease',
-          component: TodayPlease
+          path: 'announcement',
+          component: Announcement,
+          name:'Announcement'
         },
         {
-          path: 'pleasegoout',
-          component: PleaseGoOut
+          path: 'order',
+          component: Order,
+          name:'Order'
         },
         {
           path: 'memessage',

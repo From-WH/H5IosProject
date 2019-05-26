@@ -3,9 +3,16 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import './common/reset.css'
 import Ajax from './util/Ajax';
+import { Cell, CellGroup } from "vant";
+import { Tabbar, TabbarItem } from 'vant';
+import { Dialog } from 'vant';
+import { Field } from 'vant';
 
+Vue.use(Field);
+Vue.use(Dialog);
+Vue.use(Tabbar).use(TabbarItem);
+Vue.use(Cell).use(CellGroup);
 Vue.config.productionTip = false;
 Vue.prototype.Ajax = Ajax;
 
