@@ -14,7 +14,7 @@
           <input type="password" maxlength="20" v-model="loginForm.password">
         </div>
         <div class="content-btnSty">
-          <div class="content-btn" @click="login">登录</div>
+          <div class="content-btn" @click="login()">登录</div>
           <div class="content-btn" @click="singUp">去注册</div>
         </div>
       </div>
@@ -31,27 +31,23 @@ export default {
   data() {
     return {
       loginForm: {
-        username: "18211131111",
-        password: "123456"
+        'username': "18211131111",
+        'password': "123456"
       },
       UserToken: ""
     };
   },
   methods: {
     login() {
-      if (this.isTrue()) {
-        let token = "xxxxx";
-        sessionStorage.setItem("iosWebToke", token);
-        alert("登录成功");
-        this.$router.push({ path: "/tabs/announcement" });
-
-        this.Ajax.post("/Mobile/login", this.loginForm).then(res => {
-          let token = "xxxxx";
-          sessionStorage.setItem("iosWebToke", token);
+      console.log(1111111111111)
+      this.Ajax.post("user/logIn", this.loginForm).then(res => {
+        if (res.status == 200) {
+          let token = res.data.accessToken;
+          sessionStorage.setItem("accessToken", token);
           alert("登录成功");
           this.$router.push({ path: "/tabs/announcement" });
-        });
-      }
+        }
+      });
     },
     singUp() {
       this.$router.push({ path: "/logon" });

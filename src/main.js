@@ -8,7 +8,9 @@ import { Cell, CellGroup } from "vant";
 import { Tabbar, TabbarItem } from 'vant';
 import { Dialog } from 'vant';
 import { Field } from 'vant';
+import { Switch } from 'vant';
 
+Vue.use(Switch);
 Vue.use(Field);
 Vue.use(Dialog);
 Vue.use(Tabbar).use(TabbarItem);

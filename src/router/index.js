@@ -11,6 +11,7 @@ const Announcement = () => import('../pages/MainMessage/Announcement.vue');
 const Order = () => import('../pages/MainMessage/Order.vue');
 const MeMessage = () => import('../pages/MainMessage/MeMessage.vue');
 const Approval = () => import('../pages/ApprovalStatus/Approval')
+const Account = () => import('../pages/Settings/Account')
 
 let router = new Router({
   routes: [
@@ -21,12 +22,12 @@ let router = new Router({
     {
       path: '/login',
       component: Login,
-      name:'Login'
+      name: 'Login'
     },
     {
       path: '/logon',
       component: logon,
-      name:'Logon'
+      name: 'Logon'
     },
     {
       path: '/tabs',
@@ -36,22 +37,28 @@ let router = new Router({
         {
           path: 'announcement',
           component: Announcement,
-          name:'Announcement'
+          name: 'Announcement'
         },
         {
           path: 'order',
           component: Order,
-          name:'Order'
+          name: 'Order'
         },
         {
           path: 'memessage',
-          component: MeMessage
+          component: MeMessage,
+          name: 'MeMessage'
         },
       ]
     },
     {
       path: '/approval',
       component: Approval
+    },
+    {
+      path: '/account',
+      component: Account,
+      name: 'Account'
     },
   ]
 });

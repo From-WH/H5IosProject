@@ -13,7 +13,7 @@
       <van-cell icon="balance-list-o" title="资金明细" is-link to="index"/>
       <van-cell icon="qr" title="推广二维码" is-link to="index"/>
       <van-cell icon="friends-o" title="团队管理" is-link to="index"/>
-      <van-cell icon="bill-o" title="账号管理" is-link to="index"/>
+      <van-cell icon="bill-o" title="账号管理" is-link to="/account"/>
     </div>
     <div class="c-footer">
       <van-cell icon="records" title="修改密码" is-link to="index"/>

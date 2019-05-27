@@ -14,8 +14,24 @@
           <input type="password" maxlength="20" v-model="loginForm.password">
         </div>
         <div class="content-item">
-          <span>重复密码</span>
-          <input type="password" maxlength="20" v-model="loginForm.passwordagain">
+          <span>取现密码</span>
+          <input type="password" maxlength="20" v-model="loginForm.iconPassword">
+        </div>
+        <div class="content-item">
+          <span>邀请码</span>
+          <input type="password" maxlength="20" v-model="loginForm.invitedCOde">
+        </div>
+        <div class="content-item">
+          <span>联系电话</span>
+          <input type="password" maxlength="20" v-model="loginForm.mobile">
+        </div>
+        <div class="content-item">
+          <span>真实姓名</span>
+          <input type="password" maxlength="20" v-model="loginForm.realname">
+        </div>
+        <div class="content-item">
+          <span>身份证号</span>
+          <input type="password" maxlength="20" v-model="loginForm.id_card">
         </div>
         <div class="content-btnSty">
           <div class="content-btn" @click="login">去登录</div>
@@ -35,43 +51,29 @@ export default {
   data() {
     return {
       loginForm: {
-        username: "18211131111",
-        password: "123456",
-        passwordagain: ""
+        username: "",
+        password: "",
+        iconPassword: "",
+        invitedCOde: "",
+        mobile: "",
+        realname: "",
+        id_card: ""
       },
       UserToken: ""
     };
   },
   methods: {
-    logon() {
-      if (this.isTrue()) {
-        let token = "xxxxx";
-        sessionStorage.setItem("iosWebToke", token);
-        alert("登录成功");
-        this.$router.push({ path: "/tabs/todayplease" });
-
-        this.Ajax.post("/Mobile/login", this.loginForm).then(res => {
-          let token = "xxxxx";
-          sessionStorage.setItem("iosWebToke", token);
-          alert("登录成功");
-          this.$router.push({ path: "/tabs/todayplease" });
-        });
-      }
-    },
     login() {
       this.$router.push({ path: "/login" });
     },
-    isTrue() {
-      const subForm = this.loginForm;
-      if (!/^1[34578]\d{9}$/.test(subForm.username)) {
-        alert("请输入正确的手机号码");
-        return false;
-      }
-      if (subForm.password.length < 6) {
-        alert("密码最少6位");
-        return false;
-      }
-      return true;
+    logon() {
+      this.Ajax.post("register", this.loginForm).then(res => {
+        if (res.status == 200) {
+          sessionStorage.setItem("iosWebToke", token);
+          alert("登录成功");
+          this.$router.push({ path: "/tabs/announcement" });
+        }
+      });
     }
   }
 };

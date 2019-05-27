@@ -61,8 +61,7 @@ export default {
   name: "Announcement",
   data() {
     return {
-      announcement:
-        "111",
+      announcement: "111",
       show1: false,
       show2: false,
       Recharge: {
@@ -84,8 +83,19 @@ export default {
     };
   },
   // 挂载完成时
-  mounted() {},
+  mounted() {
+    this.init()
+  },
   methods: {
+    init(){
+      this.getData()
+    },
+    getData() {
+      this.Ajax.post("", {
+        token: sessionStorage.getItem("iosWebToke", token),
+        data: this.withdraw
+      }).then(res => {});
+    },
     Recharge() {
       this.show1 = true;
     },
